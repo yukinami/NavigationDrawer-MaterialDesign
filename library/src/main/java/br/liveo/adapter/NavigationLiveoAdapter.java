@@ -189,6 +189,7 @@ public class NavigationLiveoAdapter extends BaseAdapter {
                 holder.title.setTextColor((!item.isHeader && item.checked && item.colorSelected > 0 ?
                         mcontext.getResources().getColor(item.colorSelected) :
                         mColorName > 0 ? mcontext.getResources().getColor(mColorName) :
+                        mColorDefault != 0 ? mcontext.getResources().getColor(mColorDefault) :
                         mcontext.getResources().getColor(R.color.nliveo_black)));
             }else{
                 holder.layoutSeparator.setVisibility(View.VISIBLE);
@@ -217,6 +218,11 @@ public class NavigationLiveoAdapter extends BaseAdapter {
                     setNewCounterValue(position, 0);
                 }
 			}
+
+            holder.counter.setTextColor(mColorDefault != 0 ?
+                    mcontext.getResources().getColor(mColorDefault) :
+                    mcontext.getResources().getColor(R.color.nliveo_black));
+
 		}
 		
 		if (holder.icon != null) {
@@ -227,8 +233,8 @@ public class NavigationLiveoAdapter extends BaseAdapter {
 
                 holder.icon.setColorFilter((!item.isHeader && item.checked && item.colorSelected > 0 ?
                         mcontext.getResources().getColor(item.colorSelected) :
-                        (mColorDefault != 0 ? mcontext.getResources().getColor(mColorDefault) :
-                                mColorIcon > 0 ? mcontext.getResources().getColor(mColorIcon) :
+                        (mColorIcon > 0 ? mcontext.getResources().getColor(mColorIcon) :
+                                           mColorDefault != 0 ? mcontext.getResources().getColor(mColorDefault) :
                                            mcontext.getResources().getColor(R.color.nliveo_black))));
 			} else {
 				holder.icon.setVisibility(View.GONE);
